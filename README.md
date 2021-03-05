@@ -21,7 +21,7 @@ node index.js
 ```
 
 ## Pin Diagram
-![raspberrypi dht11 pin diagram](./raspberrypi-dht11_bb.png?raw=true)
+![raspberrypi dht11 pin diagram](./raspberrypi-dht11_bb.png?raw=true =653x)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
