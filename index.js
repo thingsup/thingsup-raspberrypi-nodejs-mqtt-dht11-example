@@ -1,5 +1,4 @@
 const mqtt = require("mqtt");
-const fs = require("fs");
 const sensor = require("node-dht-sensor");
 
 /*
@@ -8,19 +7,12 @@ const sensor = require("node-dht-sensor");
 *	Port: 1883(Secure MQTT)/ 8083(Secure MQTT over Websockets)
 */
 
-const CaFile = fs.readFileSync('./AmazonRootCA1.pem');
-
 const options = {
-	clientId: "mqttjs01",
-	port: 1883,
-	protocol: 'mqtts',
 	username: "<AccountID>:<Name you specified>", //e.g. 3p309xhfhfhfhf:TestDevice1
-	password: "<Your MQTT Password>",	      //e.g. Test12345
-	ca: CaFile,
-	clean: true
+	password: "Your MQTT Password",	      		  //e.g. Test12345
 };
 
-const client = mqtt.connect("mqtts://mqtt.thingsup.io", options);
+const client = mqtt.connect("mqtts://mqtt.thingsup.io:1883", options);
 
 client.on("connect", function() {
 	console.log("connected " + client.connected);
@@ -43,11 +35,11 @@ function publish(topic, options) {
 	console.log("publishing message");
 	if (client.connected == true) {
 		sensor.read(11, 4, function(err, temperature, humidity) {
-		if(!err) {
-		console.log(`temperature: ${temperature}C, humidity: ${humidity}%`);
-		const data = JSON.stringify({temp: temperature, humi: humidity});
-		client.publish(topic, data, pubOptions);
-		}
+			if(!err) {
+				console.log(`temperature: ${temperature}C, humidity: ${humidity}%`);
+				const data = JSON.stringify({temp: temperature, humi: humidity});
+				client.publish(topic, data, pubOptions);
+			}
 		});
 	}
 }
