@@ -22,7 +22,6 @@ node index.js
 
 ## Pin Diagram
 <img src="./raspberrypi-dht11_bb.png" alt="raspberrypi dht11 pin diagram" width="653"/>
-![raspberrypi dht11 pin diagram](./raspberrypi-dht11_bb.png =653x)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
